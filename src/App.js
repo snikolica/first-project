@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './index.css';
+import data from './data'
+import Link from './Link';
+import Card from './Card';
+import Button from './Button';
+
 
 function App() {
+  const [people, setPeople] = useState(data)
+  const otvori = () =>{
+    setPeople([])
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Card className='container' >
+     <h2>{people.length ? people.length + ' birthday' : 'empty'}</h2>
+     <Link people={people}/>
+     
+     {people.length ? <Button className='btn' onClick={otvori}>clear all</Button> : ''}
+     
+      </Card>
+    
   );
 }
 
